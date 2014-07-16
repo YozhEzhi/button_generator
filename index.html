@@ -20,57 +20,62 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container-fluid">
-      <h1 class="text-center">CSS3 Button Generator</h1>
-      <div class="row">
-        <div class="rows col-md-4">
-          <div class="well">
-            <h3 class="text-center">Border-radius</h3>
-            <div class="row">
-              <div class="col-md-6 text-center">
-                <button type="button" id="increase-radius" class="btn btn-info"><span class="glyphicon glyphicon-chevron-up"></span></button>
-                <button type="button" id="reduse-radius" class="btn btn-info"><span class="glyphicon glyphicon-chevron-down"></span></button>
+    <div class="container generator">
+      <h1 class="h1 text-center">CSS3 Button Generator</h1>
+      <div class="row gen__settings">
+        <div class="rows col-md-6">
+          <h3 class="text-center">Border-radius</h3>
+          <div class="row">
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-4 control-label">Border-radius</label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                </div>
               </div>
 
-              <div class="col-md-6 text-center">
-                <div class="input-group">
-                  <div class="input-group-addon">Step</div>
-                  <input id="step" class="form-control" type="text" value="1">
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-4 control-label">Border-size</label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
                 </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-4 control-label">Text</label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                </div>
+              </div>
+             </form>
+          </div>
+
+          <h3 class="text-center">Color</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input-group">
+                <div class="input-group-addon">Background</div>
+                <input id="bg-color" class="form-control color" type="text" value="CCCCC">
               </div>
             </div>
-
-            <h3 class="text-center">Color</h3>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="input-group">
-                  <div class="input-group-addon">Background</div>
-                  <input id="bg-color" class="form-control color" type="text" value="CCCCC">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="input-group">
-                  <div class="input-group-addon">Border</div>
-                  <input id="border-color" class="form-control color" type="text" value="777777">
-                </div>
+            <div class="col-md-6">
+              <div class="input-group">
+                <div class="input-group-addon">Border</div>
+                <input id="border-color" class="form-control color" type="text" value="777777">
               </div>
             </div>
           </div>
         </div>
 
-        <div class="rows col-md-4">
-          <div class="well">
-            <h3 class="text-center">Result</h3>
-            <div class="create"></div>
-          </div>
+        <div class="rows col-md-6 text-center">
+          <h3>Result</h3>
+          <div class="create">Button text</div>
         </div>
+      </div>
 
-        <div class="rows col-md-4">
-          <div class="well">
-            <h3 class="text-center">Your CSS</h3>
-            <textarea class="form-control" id="code-result" cols="30" rows="10"></textarea>
-          </div>
-        </div>
+      <div class="row gen__results">
+        <textarea class="form-control" id="html-code" cols="30" rows="10"></textarea>
+        <textarea class="form-control" id="css-code" cols="30" rows="10"></textarea>
       </div>
     </div>
 
@@ -78,7 +83,6 @@
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.js"><\/script>')</script>
 
     <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/jscolor/jscolor.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
