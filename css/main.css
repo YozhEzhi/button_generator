@@ -1,0 +1,25 @@
+body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+}
+.well {
+	min-height: 500px;
+	padding: 19px 10px;
+}
+.create {
+	background: #CCC;
+	border: 1px solid #777;
+	height: 40px;
+	margin: 50px auto;
+	width: 140px;
+}
+.row {
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+}
+.btn-info:active:focus, .btn-info:active, .btn-info:focus {
+	outline: none;
+}
