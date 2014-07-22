@@ -40,7 +40,7 @@ module.exports = function (grunt) {
 
 		// плагин проверки js:
 		jshint: {
-		  options: {
+			options: {
 				curly   : true,
 				eqeqeq  : true,
 				immed   : true,
@@ -52,49 +52,50 @@ module.exports = function (grunt) {
 				eqnull  : true,
 				browser : true,
 				globals : {
-				  jQuery: true,
-				  $: true,
-				  console: true
+					jQuery: true,
+					$: true,
+					console: true
 				}
-		  },
+			},
 
-		  // вставляем название проекта из package.json;
-		  "<%= pkg.name %>": {
+		  	// вставляем название проекта из package.json;
+		  	"<%= pkg.name %>": {
 
 		  	// какие файлы проверять;
-				src: [ "src/js/*.js" ]
+			src: [ "src/js/*.js" ]
 		  }
 		},
 
 		// плагин конкатенации:
-		concat: {
-			dist: {
-				src: ["src/js/main.js"],
-				dest: "dest/js/build.js"
-			}
-		},
+		// concat: {
+		// 	dist: {
+		// 		src: ["src/js/main.js"],
+		// 		dest: "dest/js/build.js"
+		// 	}
+		// },
 
 		// плагин минификации js:
-		uglify: {
-			build: {
-				src: "dest/js/build.js",
-				dest: "dest/js/build.min.js"
-			}
-		},
+		// uglify: {
+		// 	build: {
+		// 		src: "dest/js/build.js",
+		// 		dest: "dest/js/build.min.js"
+		// 	}
+		// },
 
 		// плагин удаления логов:
-		removelogging: {
-			dist: {
-				src: "dest/js/build.min.js",
-				dest: "dest/js/build.min.js"
-			}
-		},
+		// removelogging: {
+		// 	dist: {
+		// 		src: "dest/js/build.min.js",
+		// 		dest: "dest/js/build.min.js"
+		// 	}
+		// },
 
 		// плагин для слежки за файлами:
 		watch: {
 			scripts: {
 				files: ["src/js/*.js"],
-				tasks: ["jshint", "concat", "uglify", "removelogging"]
+				// tasks: ["jshint", "concat", "uglify", "removelogging"]
+				tasks: ["jshint"]
 			},
 
 			css: {
@@ -109,11 +110,12 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-contrib-sass");
 	grunt.loadNpmTasks("grunt-contrib-cssmin");
 	grunt.loadNpmTasks("grunt-contrib-jshint");
-	grunt.loadNpmTasks("grunt-contrib-concat");
-	grunt.loadNpmTasks("grunt-contrib-uglify");
-	grunt.loadNpmTasks("grunt-remove-logging");
+	// grunt.loadNpmTasks("grunt-contrib-concat");
+	// grunt.loadNpmTasks("grunt-contrib-uglify");
+	// grunt.loadNpmTasks("grunt-remove-logging");
 	grunt.loadNpmTasks("grunt-contrib-watch");
 
 	// регистрируем задачу:
-	grunt.registerTask("default", ["sass", "cssmin", "jshint", "concat", "uglify", "removelogging", "watch"]);
+	// grunt.registerTask("default", ["sass", "cssmin", "jshint", "concat", "uglify", "removelogging", "watch"]);
+	grunt.registerTask("default", ["sass", "cssmin", "jshint", "watch"]);
 };

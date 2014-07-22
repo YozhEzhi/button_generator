@@ -12,6 +12,7 @@
 
       <link rel="stylesheet" href="apps/bootstrap/dist/css/bootstrap.min.css">
       <link rel="stylesheet" href="dest/css/main.min.css">
+      <link rel="stylesheet" href="apps/jquery-ui-1.11.0/jquery-ui.min.css">
 
       <script src="apps/modernizer/modernizr.js"></script>
   </head>
@@ -24,65 +25,58 @@
       <h1 class="h1 text-center">CSS3 Button Generator</h1>
       <div class="row gen__settings">
         <div class="rows col-md-6">
-          <h3 class="text-center">Border-radius</h3>
+          <h3 class="text-center">Options</h3>
           <div class="row">
             <form class="form-horizontal" role="form">
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-4 control-label">Border-radius</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  <div id="brad-slider"></div>
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-4 control-label">Border-size</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  <div id="brdr-slider"></div>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="inputPassword3" class="col-sm-4 control-label">Text</label>
+                <label for="input-text" class="col-sm-4 control-label">Text</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  <input id="input-text" type="text" class="form-control" placeholder="Button text">
                 </div>
               </div>
              </form>
-          </div>
-
-          <h3 class="text-center">Color</h3>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="input-group">
-                <div class="input-group-addon">Background</div>
-                <input id="bg-color" class="form-control color" type="text" value="CCCCC">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="input-group">
-                <div class="input-group-addon">Border</div>
-                <input id="border-color" class="form-control color" type="text" value="777777">
-              </div>
-            </div>
           </div>
         </div>
 
         <div class="rows col-md-6 text-center">
           <h3>Result</h3>
-          <button class="create" type="button">Button text</button>
+          <button id="create" class="create" type="button">Button text</button>
         </div>
       </div>
 
       <div class="row gen__results">
-        <textarea class="form-control" id="html-code" cols="30" rows="10"></textarea>
-        <textarea class="form-control" id="css-code" cols="30" rows="10"></textarea>
+        <form role="form">
+          <div class="form-group">
+            <textarea id="html-code" class="form-control" placeholder="HTML code" cols="30" rows="10" readonly></textarea>
+            <textarea id="css-code" class="form-control" placeholder="CSS code" cols="30" rows="10" readonly></textarea>
+          </div>
+
+          <input class="form-control" type="email" placeholder="your@email.com">
+
+          <button type="submit" class="btn btn-default btn-success">Submit</button>
+        </form>
       </div>
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
-    <script>window.jQuery || document.write('<script src="apps/jquery/dist/jquery.min.js"><\/script>')</script>
+    <!-- Scripts -->
+    <script src="apps/jquery-1.11.1.js"></script></script>
 
+    <script src="apps/jquery-ui/jquery-ui.min.js"></script>
     <script src="apps/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="dest/js/build.min.js"></script>
+    <script src="src/js/main.js"></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 (function() {
-	console.log('test');
+
 	var app = {
 		initialize: function() {
 			this.setUpListeners();
@@ -93,6 +93,47 @@
 
 	};
 
+	// Инициализируем слайдер:
+	function hexFromRGB(red) {
+
+		var hex = red.toString(16);
+
+		$.each( hex, function( nr, val ) {
+			if ( val.length === 1 ) {
+				hex[ nr ] = "0" + val;
+			}
+		});
+
+		return hex.join("").toUpperCase();
+	}
+
+	function refreshSwatch() {
+
+		var red = $( "#brad-slider" ).slider("value"),
+			hex = hexFromRGB(red);
+
+		$(".create").css("background-color", "#" + hex);
+	}
+
+	$("#brad-slider").slider({
+		orientation: "horizontal",
+		range: "min",
+		max: 100,
+		value: 50,
+		slide: refreshSwatch,
+		change: refreshSwatch
+	});
+
+	$("#brdr-slider").slider({
+		orientation: "horizontal",
+		range: "min",
+		max: 100,
+		value: 50,
+		slide: refreshSwatch,
+		change: refreshSwatch
+	});
+
+	// Инициализируем модуль:
 	app.initialize();
 
 }());
