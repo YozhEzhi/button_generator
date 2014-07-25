@@ -6,16 +6,13 @@ module.exports = function (grunt) {
 		// подгружаем даннае из package.json:
 		pkg: grunt.file.readJSON("package.json"),
 
-		// плагин sass:
-		sass: {
+		// плагин compass:
+		compass: {
 			dist: {
 				options: {
-					style   : "nested"
-				},
-				files: {
-					"dest/css/main.css": [
-						"src/sass/main.scss"
-					]
+					sassDir: "src/sass",
+					cssDir: "dest/css",
+					environment: "development"
 				}
 			}
 		},
@@ -81,19 +78,19 @@ module.exports = function (grunt) {
 			scripts: {
 				files: ["src/js/*.js"],
 				// tasks: ["jshint", "concat", "uglify", "removelogging"]
-				tasks: ["jshint", "concat"]
+				tasks: ["jshint"]
 			},
 
 			css: {
 				files: ["src/sass/*.scss"],
-				tasks: ["sass", "cssmin"]
+				tasks: ["compass", "cssmin"]
 			}
 		}
 
 	});
 
 	// подгружаем необходимые плагины:
-	grunt.loadNpmTasks("grunt-contrib-sass");
+	grunt.loadNpmTasks("grunt-contrib-compass");
 	grunt.loadNpmTasks("grunt-contrib-cssmin");
 	grunt.loadNpmTasks("grunt-contrib-jshint");
 	// grunt.loadNpmTasks("grunt-contrib-concat");
@@ -102,6 +99,5 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-contrib-watch");
 
 	// регистрируем задачу:
-	// grunt.registerTask("default", ["sass", "cssmin", "jshint", "concat", "uglify", "removelogging", "watch"]);
 	grunt.registerTask("default", ["watch"]);
 };

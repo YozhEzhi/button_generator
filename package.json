@@ -1,14 +1,14 @@
 {
-  "name": "CSS3 button generator",
-  "version": "0.0.1",
+  "name": "CSS3_button_generator",
+  "version": "1.0.1",
   "devDependencies": {
     "grunt": "latest",
-    "grunt-contrib-sass"   : "latest",
-    "grunt-contrib-concat" : "latest",
-    "grunt-contrib-cssmin" : "latest",
-    "grunt-contrib-jshint" : "latest",
-    "grunt-contrib-uglify" : "latest",
-    "grunt-contrib-watch"  : "latest",
-    "grunt-remove-logging" : "latest"
+    "grunt-contrib-compass" : "latest",
+    "grunt-contrib-concat"  : "latest",
+    "grunt-contrib-cssmin"  : "latest",
+    "grunt-contrib-jshint"  : "latest",
+    "grunt-contrib-uglify"  : "latest",
+    "grunt-contrib-watch"   : "latest",
+    "grunt-remove-logging"  : "latest"
   }
 }

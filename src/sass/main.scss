@@ -1,6 +1,12 @@
+@import "compass/reset";
+
 // GLOBAL STYLES:
+html, body {
+	height: 100%;
+}
+
 body {
-	background: #ECECEC;
+	background: url("../img/tree-bark.png") repeat;
 	font-family: Trebuchet MS, sans-serif;
 	font-size: 14px;
 	font-weight: normal;
@@ -30,16 +36,19 @@ fieldset[disabled] .form-control {
 
 // GENERATOR:
 .generator {
-	background: #FFF;
-	-webkit-border-radius: 5px;
-	        border-radius: 5px;
+	background: rgba(#FFF, 0.6);
+    border: 2px solid rgba(#E7E7E7, 0.3);
 	margin: 10px auto;
 	max-width: 1002px;
 	min-height: 650px;
 	padding: 15px;
+	left: 0; right: 0; top: 0; bottom: 0;
+	margin: 30px auto;
+	position: absolute;
 }
 
 .h1 {
+	margin: 20px 0 50px;
 	text-transform: uppercase;
 }
 

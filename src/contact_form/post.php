@@ -18,30 +18,25 @@
 
 	if($post){
 
-		$name = stripslashes($_POST['name']);
-		$phone = stripslashes($_POST['phone']);
 		$email = stripslashes($_POST['email']);
-		$subject = 'Заявка';
 		$error = '';
 		$message = '
 			<html>
 				<head>
-					<title>Заявка</title>
+					<title>CSS3 Button Generator</title>
 				</head>
 				<body>
-					<p>Имя: '.$name.'</p>
-					<p>Телефон : '.$phone.'</p>
 					<p>Email : '.$email.'</p>
 				</body>
 			</html>';
 
 		if (!ValidateEmail($email)) {
-			$error = 'Email введен неправильно!';
+			$error = 'Wrong Email, bro!';
 		}
 
 		if(!$error) {
-			$mail = mail(CONTACT_FORM, $subject, $message,
-				 "From: ".$name." <".$email.">\r\n"
+			$mail = mail(CONTACT_FORM, $message,
+				 "From: <".$email.">\r\n"
 				."Reply-To: ".$email."\r\n"
 				."Content-type: text/html; charset=utf-8 \r\n"
 				."X-Mailer: PHP/" . phpversion());
