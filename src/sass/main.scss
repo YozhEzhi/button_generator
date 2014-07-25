@@ -33,10 +33,10 @@ fieldset[disabled] .form-control {
 	background: #FFF;
 	-webkit-border-radius: 5px;
 	        border-radius: 5px;
-	height: 650px;
 	margin: 10px auto;
+	max-width: 1002px;
+	min-height: 650px;
 	padding: 15px;
-	width: 1002px;
 }
 
 .h1 {
@@ -70,6 +70,7 @@ fieldset[disabled] .form-control {
 	min-height: 40px;
 	min-width: 140px;
 	padding: 0 8px;
+	text-align: center;
 }
 
 .row {
@@ -97,9 +98,9 @@ fieldset[disabled] .form-control {
 		vertical-align: top;
 		width: 220px;
 		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
+		   -moz-user-select: none;
+			-ms-user-select: none;
+				user-select: none;
 	}
 
 	input {
@@ -113,4 +114,14 @@ fieldset[disabled] .form-control {
 .ui-slider {
 	margin: 15px 0;
 	width: 100%;
+}
+
+// TOOLTIP:
+.tooltip-inner {
+	background: #FF8993;
+	padding: 7px 12px;
+}
+
+.tooltip.right .tooltip-arrow {
+	border-right-color: #FF8993;
 }

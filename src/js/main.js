@@ -1,4 +1,14 @@
-(function() {
+// ЗАМЕТКИ:
+
+// create    - кнопка;
+// maxRadius - максимальный радиус скругления (половина высоты кнопки);
+// maxBorder - максимальная ширина бордюра (шестая часть высоты кнопки);
+// sliderWidth - длина слайдера;
+// rangeWidth - длина выбраного уровня слайдера;
+// radiusValue - сырое значение радиуса;
+// radiusToCss - готовое значение радиуса для стилей;
+
+;(function() {
 
 	var app = {
 		initialize: function() {
@@ -17,10 +27,8 @@
 		create    : $(".create"),
 		maxRadius : $(".create").outerHeight() / 2,
 		maxBorder : $(".create").outerHeight() / 6,
-		MAXRADIUS : 20,
-		MINRADIUS : 0,
 
-		// Описываем слайдера:
+		// Настройки слайдера:
 		setUpSlider: function() {
 			$("#brad-slider").slider({
 				orientation: "horizontal",
@@ -41,16 +49,12 @@
 
 		// Получаем значение border-radius из слайдера:
 		getBorderRadius: function() {
-			var y = $("#brad-slider").css("width"),
-				y1 = parseFloat(y),
-				x = $("#brad-slider .ui-slider-range").css("width"),
-				x1 = parseFloat(x),
-				z = x1/y1,
-				z1 = z * app.maxRadius,
-				z2 = z1.toFixed() + "px";
+			var sliderWidth = parseFloat($("#brad-slider").css("width")),
+				rangeWidth  = parseFloat($("#brad-slider .ui-slider-range").css("width")),
+				radiusValue = (rangeWidth/sliderWidth) * app.maxRadius,
+				radiusToCss = radiusValue.toFixed() + "px";
 
-			app.changeRadius(z2);
-
+			app.changeRadius(radiusToCss);
 			app.updateResult();
 		},
 
@@ -63,49 +67,67 @@
 
 		// Получаем значение border-width из слайдера:
 		getBorderWidth: function() {
-			var y = $("#brdr-slider").css("width"),
-				y1 = parseFloat(y),
-				x = $("#brdr-slider .ui-slider-range").css("width"),
-				x1 = parseFloat(x),
-				z = x1/y1,
+			var y = parseFloat($("#brdr-slider").css("width")),
+				x = parseFloat($("#brdr-slider .ui-slider-range").css("width")),
+				z = x/y,
 				z1 = z * app.maxBorder,
-				z2 = z1.toFixed() + "px";
+				borderToCss = z1.toFixed() + "px";
 
-			app.changeBorderWidth(z2);
-
+			app.changeBorderWidth(borderToCss);
 			app.updateResult();
 		},
 
 		// Изменяем border-width кнопке:
-		changeBorderWidth: function(width) {
+		changeBorderWidth: function(borderWidth) {
 			this.create.css({
-				"border-width" : width
+				"border-width" : borderWidth
 			});
 		},
 
+		// Изменяем текст в кнопке:
 		textChange : function() {
 			var text = $("#input-text").val();
 
 			this.create.text(text);
-
 			this.updateResult();
 		},
 
+		// Изменение кнопки и результатов вывода:
 		updateResult: function() {
-			var borderRadius = this.create.css("border-radius"),
-				border       = this.create.css("border"),
-				htmlResult   = $("#create").html(),
-				htmlCode     = $("#html-code"),
-				cssCode      = $("#css-code");
+			var btnBorderRadius = this.create.css("border-radius"),
+				btnBorder       = this.create.css("border"),
+				htmlResult      = $("#create").html(),
+				htmlCode        = $("#html-code"),
+				cssCode         = $("#css-code");
 
 			htmlCode.text(
-				'<button class="button" type="submit">' + htmlResult + '</button>'
+				"<button class='button' type='submit'>" + htmlResult + "</button>"
 			);
 
 			cssCode.text(
-				"border: " + border + ";\n" +
-				"-webkit-border-radius: " + borderRadius + ";\n" +
-				"border-radius: " + borderRadius + ";"
+				"background-color: #77C0ED;\n" +
+				"background-image: -webkit-gradient(" +
+									"linear, left top, left bottom," +
+									"color-stop(0%, #77C0ED)," +
+									"color-stop(100%, #5DB2E8)" +
+								  ");\n" +
+				"background-image: -webkit-linear-gradient(top, #77C0ED, #5DB2E8);\n" +
+				"background-image:    -moz-linear-gradient(top, #77C0ED, #5DB2E8);\n" +
+				"background-image:   linear-gradient(to bottom, #77C0ED, #5DB2E8);\n" +
+				"background-repeat: repeat-y;\n" +
+				"border: " + btnBorder + ";\n" +
+				"-webkit-border-radius: " + btnBorderRadius + ";\n" +
+				"border-radius: " + btnBorderRadius + ";\n" +
+				"-webkit-box-shadow: 0 1px 0 #CCE7F8 inset;\n" +
+				        "box-shadow: 0 1px 0 #CCE7F8 inset;\n" +
+				"color: #FFF;\n" +
+				"font-weight: bold;\n" +
+				"line-height: 2.6em;\n" +
+				"margin: 50px auto;\n" +
+				"min-height: 40px;\n" +
+				"min-width: 140px;\n" +
+				"padding: 0 8px;\n" +
+				"text-align: center;"
 			);
 		}
 

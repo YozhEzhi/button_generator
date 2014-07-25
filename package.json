@@ -1,5 +1,5 @@
 {
-  "name": "dz3",
+  "name": "CSS3 button generator",
   "version": "0.0.1",
   "devDependencies": {
     "grunt": "latest",

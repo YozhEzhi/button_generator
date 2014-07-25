@@ -23,10 +23,10 @@ fieldset[disabled] .form-control {
   background: #FFF;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  height: 650px;
   margin: 10px auto;
-  padding: 15px;
-  width: 1002px; }
+  max-width: 1002px;
+  min-height: 650px;
+  padding: 15px; }
 
 .h1 {
   text-transform: uppercase; }
@@ -51,7 +51,8 @@ fieldset[disabled] .form-control {
   margin: 50px auto;
   min-height: 40px;
   min-width: 140px;
-  padding: 0 8px; }
+  padding: 0 8px;
+  text-align: center; }
 
 .row {
   -webkit-user-select: none;
@@ -85,3 +86,10 @@ fieldset[disabled] .form-control {
 .ui-slider {
   margin: 15px 0;
   width: 100%; }
+
+.tooltip-inner {
+  background: #FF8993;
+  padding: 7px 12px; }
+
+.tooltip.right .tooltip-arrow {
+  border-right-color: #FF8993; }

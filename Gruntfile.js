@@ -2,6 +2,7 @@ module.exports = function (grunt) {
 
 	// описываем конфигурацию:
 	grunt.initConfig({
+
 		// подгружаем даннае из package.json:
 		pkg: grunt.file.readJSON("package.json"),
 
@@ -9,33 +10,25 @@ module.exports = function (grunt) {
 		sass: {
 			dist: {
 				options: {
-					// compass : true,
 					style   : "nested"
 				},
-				// files: [{
-				//     nested: true,
-				//     cwd: "src/sass",
-				//     src: ["*.scss"],
-				//     dest: "src/css",
-				//     ext: ".css"
-				// }]
-			  files: {
-			  	"dest/css/main.css": [
-					  "src/sass/main.scss"
+				files: {
+					"dest/css/main.css": [
+						"src/sass/main.scss"
 					]
-			  }
+				}
 			}
 		},
 
 		// плагин минификации и конкатенации css:
 		cssmin: {
-		  minify: {
-		    expand: true,
-		    cwd: "dest/css/",
-		    src: ["*.css", "!*.min.css"],
-		    dest: "dest/css/",
-		    ext: ".min.css"
-		  }
+			minify: {
+				expand: true,
+				cwd: "dest/css/",
+				src: ["*.css", "!*.min.css"],
+				dest: "dest/css/",
+				ext: ".min.css"
+			}
 		},
 
 		// плагин проверки js:
@@ -56,23 +49,16 @@ module.exports = function (grunt) {
 					$: true,
 					console: true
 				}
-			},
-
-		  	// вставляем название проекта из package.json;
-		  	"<%= pkg.name %>": {
-
-		  	// какие файлы проверять;
-			src: [ "src/js/*.js" ]
-		  }
+			}
 		},
 
 		// плагин конкатенации:
-		// concat: {
-		// 	dist: {
-		// 		src: ["src/js/main.js"],
-		// 		dest: "dest/js/build.js"
-		// 	}
-		// },
+		concat: {
+			dist: {
+				src: ["src/js/main.js"],
+				dest: "dest/js/build.js"
+			}
+		},
 
 		// плагин минификации js:
 		// uglify: {
@@ -95,7 +81,7 @@ module.exports = function (grunt) {
 			scripts: {
 				files: ["src/js/*.js"],
 				// tasks: ["jshint", "concat", "uglify", "removelogging"]
-				tasks: ["jshint"]
+				tasks: ["jshint", "concat"]
 			},
 
 			css: {
@@ -117,5 +103,5 @@ module.exports = function (grunt) {
 
 	// регистрируем задачу:
 	// grunt.registerTask("default", ["sass", "cssmin", "jshint", "concat", "uglify", "removelogging", "watch"]);
-	grunt.registerTask("default", ["sass", "cssmin", "jshint", "watch"]);
+	grunt.registerTask("default", ["watch"]);
 };
