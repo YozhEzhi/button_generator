@@ -26,7 +26,7 @@
 
 		create    : $(".create"),
 		maxRadius : $(".create").outerHeight() / 2,
-		maxBorder : $(".create").outerHeight() / 6,
+		maxBorder : $(".create").outerHeight() / 4,
 
 		// Настройки слайдера:
 		setUpSlider: function() {
@@ -42,6 +42,7 @@
 				orientation: "horizontal",
 				range: "min",
 				max: this.maxRadius,
+				step: 1,
 				value: this.maxRadius / 2,
 				slide: this.getBorderWidth
 			});
@@ -55,6 +56,7 @@
 				radiusToCss = radiusValue.toFixed() + "px";
 
 			app.changeRadius(radiusToCss);
+
 			app.updateResult();
 		},
 
@@ -96,7 +98,7 @@
 		updateResult: function() {
 			var btnBackground   = this.create.css("background-color"),
 				btnBorderRadius = this.create.css("border-radius"),
-				btnBorder       = this.create.css("border"),
+				btnBorder       = this.create.css("border-width"),
 				htmlResult      = $("#create").html(),
 				htmlCode        = $("#html-code"),
 				cssCode         = $("#css-code");
