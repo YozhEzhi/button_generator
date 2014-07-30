@@ -1,4 +1,9 @@
 @import "compass/reset";
+@import "compass/css3";
+
+// VARIABLES:
+$c-bg-slider       : #1ABC9C;
+$c-bg-slider-hover : #48C9B0;
 
 // GLOBAL STYLES:
 html, body {
@@ -19,7 +24,7 @@ body {
 input {
 	&[placeholder]:focus::-webkit-input-placeholder {
 		-webkit-transition: color 0.3s linear;
-	    	    transition: color 0.3s linear;
+				transition: color 0.3s linear;
 		color: transparent;
 	}
 
@@ -36,8 +41,8 @@ fieldset[disabled] .form-control {
 
 // GENERATOR:
 .generator {
-	background: rgba(#FFF, 0.6);
-    border: 2px solid rgba(#E7E7E7, 0.3);
+	background: rgba(#FFF, 0.8);
+    border: 2px solid rgba(#E7E7E7, 0.8);
 	margin: 10px auto;
 	max-width: 1002px;
 	min-height: 650px;
@@ -48,7 +53,7 @@ fieldset[disabled] .form-control {
 }
 
 .h1 {
-	margin: 20px 0 50px;
+	margin: 20px 0 35px;
 	text-transform: uppercase;
 }
 
@@ -57,21 +62,17 @@ fieldset[disabled] .form-control {
 	margin: 0 0 30px;
 }
 
+.option-title {
+	font-size: 1.8em;
+	margin: 0 0 20px;
+}
+
 .create {
-	background-color: #77C0ED;
-	background-image: -webkit-gradient(
-						linear, left top, left bottom,
-						color-stop(0%, #77C0ED),
-						color-stop(100%, #5DB2E8)
-					  );
-	background-image: -webkit-linear-gradient(top, #77C0ED, #5DB2E8);
-	background-image:    -moz-linear-gradient(top, #77C0ED, #5DB2E8);
-	background-image:   linear-gradient(to bottom, #77C0ED, #5DB2E8);
-	background-repeat: repeat-y;
-	border-color: #3181B4;
+	@include transition(all 0.3s ease);
+
+	background-color: $c-bg-slider;
+	border-color: darken($c-bg-slider, 5%);
 	border-style: solid;
-	-webkit-box-shadow: 0 1px 0 #CCE7F8 inset;
-	        box-shadow: 0 1px 0 #CCE7F8 inset;
 	color: #FFF;
 	font-weight: bold;
 	line-height: 2.6em;
@@ -80,6 +81,11 @@ fieldset[disabled] .form-control {
 	min-width: 140px;
 	padding: 0 8px;
 	text-align: center;
+
+	&:hover {
+		background-color: $c-bg-slider-hover;
+		border-color: darken($c-bg-slider-hover, 5%);
+	}
 }
 
 .row {
@@ -100,16 +106,17 @@ fieldset[disabled] .form-control {
 	text-align: center;
 
 	textarea {
-		-webkit-border-radius: 3px;
-		        border-radius: 3px;
-		display: inline-block;
-		height: 110px;
-		vertical-align: top;
-		width: 220px;
 		-webkit-user-select: none;
 		   -moz-user-select: none;
 			-ms-user-select: none;
 				user-select: none;
+
+		-webkit-border-radius: 3px;
+		        border-radius: 3px;
+		display: inline-block;
+		height: 255px;
+		vertical-align: top;
+		width: 40%;
 	}
 
 	input {
@@ -117,13 +124,64 @@ fieldset[disabled] .form-control {
 		margin: 20px auto;
 		width: 220px;
 	}
+
+	.btn-success {
+		@include transition(all 0.3s ease);
+
+		background: $c-bg-slider;
+		border-color: $c-bg-slider;
+
+		&:hover {
+			background: $c-bg-slider-hover;
+			border-color: $c-bg-slider-hover;
+		}
+	}
 }
 
 // SLIDER:
 .ui-slider {
-	margin: 15px 0;
-	width: 100%;
+	background: #EBEDEF;
+	-webkit-border-radius: 10px;
+			border-radius: 10px;
+	height: 12px;
+	margin: 7px 0 15px 0;
+	position: relative;
+
+	.ui-widget-header {
+		-webkit-border-radius: 10px;
+				border-radius: 10px;
+		background: #1ABC9C;
+	}
+
+	.ui-slider-handle {
+		@include transition(background-color 0.3s ease);
+
+		-ms-touch-action: none;
+			touch-action: none;
+		background-color: #16A085;
+		border-radius: 18px;
+		cursor: pointer;
+		height: 18px;
+		margin-left: -10px;
+		position: absolute;
+		top: -3px;
+		width: 18px;
+		z-index: 2;
+
+		&:hover,
+		&:focus {
+			background-color: #48C9B0;
+			outline: none;
+		}
+	}
 }
+
+.ui-slider-range {
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+
 
 // TOOLTIP:
 .tooltip-inner {

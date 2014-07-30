@@ -94,7 +94,8 @@
 
 		// Изменение кнопки и результатов вывода:
 		updateResult: function() {
-			var btnBorderRadius = this.create.css("border-radius"),
+			var btnBackground   = this.create.css("background-color"),
+				btnBorderRadius = this.create.css("border-radius"),
 				btnBorder       = this.create.css("border"),
 				htmlResult      = $("#create").html(),
 				htmlCode        = $("#html-code"),
@@ -105,21 +106,10 @@
 			);
 
 			cssCode.text(
-				"background-color: #77C0ED;\n" +
-				"background-image: -webkit-gradient(" +
-									"linear, left top, left bottom," +
-									"color-stop(0%, #77C0ED)," +
-									"color-stop(100%, #5DB2E8)" +
-								  ");\n" +
-				"background-image: -webkit-linear-gradient(top, #77C0ED, #5DB2E8);\n" +
-				"background-image:    -moz-linear-gradient(top, #77C0ED, #5DB2E8);\n" +
-				"background-image:   linear-gradient(to bottom, #77C0ED, #5DB2E8);\n" +
-				"background-repeat: repeat-y;\n" +
+				"background-color: " + btnBackground + ";\n" +
 				"border: " + btnBorder + ";\n" +
 				"-webkit-border-radius: " + btnBorderRadius + ";\n" +
 				"border-radius: " + btnBorderRadius + ";\n" +
-				"-webkit-box-shadow: 0 1px 0 #CCE7F8 inset;\n" +
-				        "box-shadow: 0 1px 0 #CCE7F8 inset;\n" +
 				"color: #FFF;\n" +
 				"font-weight: bold;\n" +
 				"line-height: 2.6em;\n" +

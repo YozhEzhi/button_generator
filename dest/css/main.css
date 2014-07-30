@@ -63,12 +63,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 4, ../../src/sass/main.scss */
+/* line 9, ../../src/sass/main.scss */
 html, body {
   height: 100%;
 }
 
-/* line 8, ../../src/sass/main.scss */
+/* line 13, ../../src/sass/main.scss */
 body {
   background: url("../img/tree-bark.png") repeat;
   font-family: Trebuchet MS, sans-serif;
@@ -76,33 +76,33 @@ body {
   font-weight: normal;
 }
 
-/* line 15, ../../src/sass/main.scss */
+/* line 20, ../../src/sass/main.scss */
 :focus {
   outline: none;
 }
 
-/* line 20, ../../src/sass/main.scss */
+/* line 25, ../../src/sass/main.scss */
 input[placeholder]:focus::-webkit-input-placeholder {
   -webkit-transition: color 0.3s linear;
   transition: color 0.3s linear;
   color: transparent;
 }
-/* line 26, ../../src/sass/main.scss */
+/* line 31, ../../src/sass/main.scss */
 input[placeholder]:focus::-moz-placeholder {
   color: transparent;
 }
 
-/* line 33, ../../src/sass/main.scss */
+/* line 38, ../../src/sass/main.scss */
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
   background: #FFF;
 }
 
-/* line 38, ../../src/sass/main.scss */
+/* line 43, ../../src/sass/main.scss */
 .generator {
-  background: rgba(255, 255, 255, 0.6);
-  border: 2px solid rgba(231, 231, 231, 0.3);
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(231, 231, 231, 0.8);
   margin: 10px auto;
   max-width: 1002px;
   min-height: 650px;
@@ -115,29 +115,32 @@ fieldset[disabled] .form-control {
   position: absolute;
 }
 
-/* line 50, ../../src/sass/main.scss */
+/* line 55, ../../src/sass/main.scss */
 .h1 {
-  margin: 20px 0 50px;
+  margin: 20px 0 35px;
   text-transform: uppercase;
 }
 
-/* line 56, ../../src/sass/main.scss */
+/* line 61, ../../src/sass/main.scss */
 .gen__settings {
   margin: 0 0 30px;
 }
 
-/* line 60, ../../src/sass/main.scss */
+/* line 65, ../../src/sass/main.scss */
+.option-title {
+  font-size: 1.8em;
+  margin: 0 0 20px;
+}
+
+/* line 70, ../../src/sass/main.scss */
 .create {
-  background-color: #77C0ED;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #77c0ed), color-stop(100%, #5db2e8));
-  background-image: -webkit-linear-gradient(top, #77c0ed, #5db2e8);
-  background-image: -moz-linear-gradient(top, #77c0ed, #5db2e8);
-  background-image: linear-gradient(to bottom, #77c0ed, #5db2e8);
-  background-repeat: repeat-y;
-  border-color: #3181B4;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background-color: #1abc9c;
+  border-color: #17a689;
   border-style: solid;
-  -webkit-box-shadow: 0 1px 0 #CCE7F8 inset;
-  box-shadow: 0 1px 0 #CCE7F8 inset;
   color: #FFF;
   font-weight: bold;
   line-height: 2.6em;
@@ -147,8 +150,13 @@ fieldset[disabled] .form-control {
   padding: 0 8px;
   text-align: center;
 }
-
 /* line 85, ../../src/sass/main.scss */
+.create:hover {
+  background-color: #48c9b0;
+  border-color: #38bfa5;
+}
+
+/* line 91, ../../src/sass/main.scss */
 .row {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -156,50 +164,104 @@ fieldset[disabled] .form-control {
   user-select: none;
 }
 
-/* line 94, ../../src/sass/main.scss */
+/* line 100, ../../src/sass/main.scss */
 .btn-info:focus,
 .btn-info:active,
 .btn-info:active:focus {
   outline: none;
 }
 
-/* line 99, ../../src/sass/main.scss */
+/* line 105, ../../src/sass/main.scss */
 .gen__results {
   text-align: center;
 }
-/* line 102, ../../src/sass/main.scss */
+/* line 108, ../../src/sass/main.scss */
 .gen__results textarea {
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  display: inline-block;
-  height: 110px;
-  vertical-align: top;
-  width: 220px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  height: 255px;
+  vertical-align: top;
+  width: 40%;
 }
-/* line 115, ../../src/sass/main.scss */
+/* line 122, ../../src/sass/main.scss */
 .gen__results input {
   display: block;
   margin: 20px auto;
   width: 220px;
 }
-
-/* line 123, ../../src/sass/main.scss */
-.ui-slider {
-  margin: 15px 0;
-  width: 100%;
+/* line 128, ../../src/sass/main.scss */
+.gen__results .btn-success {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background: #1abc9c;
+  border-color: #1abc9c;
+}
+/* line 134, ../../src/sass/main.scss */
+.gen__results .btn-success:hover {
+  background: #48c9b0;
+  border-color: #48c9b0;
 }
 
-/* line 129, ../../src/sass/main.scss */
+/* line 142, ../../src/sass/main.scss */
+.ui-slider {
+  background: #EBEDEF;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  height: 12px;
+  margin: 7px 0 15px 0;
+  position: relative;
+}
+/* line 150, ../../src/sass/main.scss */
+.ui-slider .ui-widget-header {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #1ABC9C;
+}
+/* line 156, ../../src/sass/main.scss */
+.ui-slider .ui-slider-handle {
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  -ms-touch-action: none;
+  touch-action: none;
+  background-color: #16A085;
+  border-radius: 18px;
+  cursor: pointer;
+  height: 18px;
+  margin-left: -10px;
+  position: absolute;
+  top: -3px;
+  width: 18px;
+  z-index: 2;
+}
+/* line 172, ../../src/sass/main.scss */
+.ui-slider .ui-slider-handle:hover, .ui-slider .ui-slider-handle:focus {
+  background-color: #48C9B0;
+  outline: none;
+}
+
+/* line 179, ../../src/sass/main.scss */
+.ui-slider-range {
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+/* line 187, ../../src/sass/main.scss */
 .tooltip-inner {
   background: #FF8993;
   padding: 7px 12px;
 }
 
-/* line 134, ../../src/sass/main.scss */
+/* line 192, ../../src/sass/main.scss */
 .tooltip.right .tooltip-arrow {
   border-right-color: #FF8993;
 }
