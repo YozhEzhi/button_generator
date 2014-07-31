@@ -15,9 +15,7 @@
 			this.setUpListeners();
 			this.setUpSlider();
 			this.getBorderRadius();
-			this.changeRadius();
 			this.getBorderWidth();
-			this.changeBorderWidth();
 		},
 
 		setUpListeners: function() {
@@ -55,16 +53,11 @@
 				radiusValue = (rangeWidth/sliderWidth) * app.maxRadius,
 				radiusToCss = radiusValue.toFixed() + "px";
 
-			app.changeRadius(radiusToCss);
-
-			app.updateResult();
-		},
-
-		// Изменяем border-radius кнопке:
-		changeRadius: function(radius) {
-			this.create.css({
-				"border-radius" : radius
+			app.create.css({
+				"border-radius" : radiusToCss
 			});
+
+			app.updateResult(radiusToCss);
 		},
 
 		// Получаем значение border-width из слайдера:
@@ -75,15 +68,11 @@
 				z1 = z * app.maxBorder,
 				borderToCss = z1.toFixed() + "px";
 
-			app.changeBorderWidth(borderToCss);
-			app.updateResult();
-		},
-
-		// Изменяем border-width кнопке:
-		changeBorderWidth: function(borderWidth) {
-			this.create.css({
-				"border-width" : borderWidth
+			app.create.css({
+				"border-width" : borderToCss
 			});
+
+			app.updateResult(borderToCss);
 		},
 
 		// Изменяем текст в кнопке:
@@ -95,23 +84,22 @@
 		},
 
 		// Изменение кнопки и результатов вывода:
-		updateResult: function() {
-			var btnBackground   = this.create.css("background-color"),
-				btnBorderRadius = this.create.css("border-radius"),
-				btnBorder       = this.create.css("border-width"),
-				htmlResult      = $("#create").html(),
-				htmlCode        = $("#html-code"),
-				cssCode         = $("#css-code");
+		updateResult: function(radiusToCss, borderToCss) {
+			var htmlResult = $("#create").html(),
+				htmlCode   = $("#html-code"),
+				cssCode    = $("#css-code");
 
 			htmlCode.text(
 				"<button class='button' type='submit'>" + htmlResult + "</button>"
 			);
 
 			cssCode.text(
-				"background-color: " + btnBackground + ";\n" +
-				"border: " + btnBorder + ";\n" +
-				"-webkit-border-radius: " + btnBorderRadius + ";\n" +
-				"border-radius: " + btnBorderRadius + ";\n" +
+				"background-color: #1ABC9C;\n" +
+				"border-color: #17a689;\n" +
+				"border-style: solid;\n" +
+				"border-width: " + borderToCss + ";\n" +
+				"-webkit-border-radius: " + radiusToCss + ";\n" +
+				"border-radius: " + radiusToCss + ";\n" +
 				"color: #FFF;\n" +
 				"font-weight: bold;\n" +
 				"line-height: 2.6em;\n" +
