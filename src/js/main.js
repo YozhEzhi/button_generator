@@ -13,9 +13,10 @@
 	var app = {
 		initialize: function() {
 			this.setUpListeners();
+			this.updateResult();
 			this.setUpSlider();
-			this.getBorderRadius();
-			this.getBorderWidth();
+			// this.getBorderRadius();
+			// this.getBorderWidth();
 		},
 
 		setUpListeners: function() {
@@ -28,36 +29,37 @@
 
 		// Настройки слайдера:
 		setUpSlider: function() {
+			var startRadius = this.create.css("border-radius"),
+				startRadius = parseInt(startRadius),
+				startBorder = this.create.css("border-width"),
+				startBorder = parseInt(startBorder);
+
 			$("#brad-slider").slider({
-				orientation: "horizontal",
 				range: "min",
 				max: this.maxRadius,
-				value: this.maxRadius / 2,
+				step: 1,
+				value: startRadius,
 				slide: this.getBorderRadius
 			});
 
 			$("#brdr-slider").slider({
-				orientation: "horizontal",
 				range: "min",
-				max: this.maxRadius,
+				max: this.maxBorder,
 				step: 1,
-				value: this.maxRadius / 2,
+				value: startBorder,
 				slide: this.getBorderWidth
 			});
 		},
 
 		// Получаем значение border-radius из слайдера:
 		getBorderRadius: function() {
-			var sliderWidth = parseFloat($("#brad-slider").css("width")),
-				rangeWidth  = parseFloat($("#brad-slider .ui-slider-range").css("width")),
-				radiusValue = (rangeWidth/sliderWidth) * app.maxRadius,
-				radiusToCss = radiusValue.toFixed() + "px";
+			var newRadiusToCss = $("#brad-slider").slider("option", "value");
 
 			app.create.css({
-				"border-radius" : radiusToCss
+				"border-radius" : newRadiusToCss
 			});
 
-			app.updateResult(radiusToCss);
+			app.updateResult();
 		},
 
 		// Получаем значение border-width из слайдера:
@@ -68,11 +70,13 @@
 				z1 = z * app.maxBorder,
 				borderToCss = z1.toFixed() + "px";
 
+			var newBorderToCss = $("#brdr-slider").slider("option", "value");
+
 			app.create.css({
-				"border-width" : borderToCss
+				"border-width" : newBorderToCss
 			});
 
-			app.updateResult(borderToCss);
+			app.updateResult();
 		},
 
 		// Изменяем текст в кнопке:
@@ -84,10 +88,12 @@
 		},
 
 		// Изменение кнопки и результатов вывода:
-		updateResult: function(radiusToCss, borderToCss) {
-			var htmlResult = $("#create").html(),
-				htmlCode   = $("#html-code"),
-				cssCode    = $("#css-code");
+		updateResult: function(newRadiusToCss) {
+			var htmlResult   = this.create.html(),
+				htmlCode     = $("#html-code"),
+				cssCode      = $("#css-code"),
+				borderRadius = this.create.css("border-radius"),
+				border       = this.create.css("border-width");
 
 			htmlCode.text(
 				"<button class='button' type='submit'>" + htmlResult + "</button>"
@@ -95,11 +101,9 @@
 
 			cssCode.text(
 				"background-color: #1ABC9C;\n" +
-				"border-color: #17a689;\n" +
-				"border-style: solid;\n" +
-				"border-width: " + borderToCss + ";\n" +
-				"-webkit-border-radius: " + radiusToCss + ";\n" +
-				"border-radius: " + radiusToCss + ";\n" +
+				"border: " + border + " solid #17a689;\n" +
+				"-webkit-border-radius: " + borderRadius + ";\n" +
+				"border-radius: " + borderRadius + ";\n" +
 				"color: #FFF;\n" +
 				"font-weight: bold;\n" +
 				"line-height: 2.6em;\n" +
