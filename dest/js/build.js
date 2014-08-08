@@ -1,139 +1,213 @@
-(function() {
+// ЗАМЕТКИ:
+
+// create    - кнопка;
+// maxRadius - максимальный радиус скругления (половина высоты кнопки);
+// maxBorder - максимальная ширина бордюра (шестая часть высоты кнопки);
+// sliderWidth - длина слайдера;
+// rangeWidth - длина выбраного уровня слайдера;
+// radiusValue - сырое значение радиуса;
+// radiusToCss - готовое значение радиуса для стилей;
+
+;(function() {
 
 	var app = {
 		initialize: function() {
 			this.setUpListeners();
 			this.updateResult();
+			this.setUpSlider();
+			// this.getBorderRadius();
+			// this.getBorderWidth();
 		},
+
 		setUpListeners: function() {
-			$("#increase-radius").on("click", $.proxy(this.increaseRadius, this));
-			$("#reduse-radius").on("click", $.proxy(this.reduseRadius, this));
-			$("#border-color").on("change", $.proxy(this.brdrColorInput, this));
-			$("#bg-color").on("change", $.proxy(this.bgColorInput, this));
+			$("#input-text").on("keyup", $.proxy(this.textChange, this));
 		},
 
 		create    : $(".create"),
-		MAXRADIUS : 20,
-		MINRADIUS : 0,
+		maxRadius : $(".create").outerHeight() / 2,
+		maxBorder : $(".create").outerHeight() / 4,
 
-		increaseRadius: function() {
-			var currentRadius = this.create.css("border-radius"),
-				step = $("#step").val(),
-				newRadius = parseInt(currentRadius) + parseInt(step);
+		// Настройки слайдера:
+		setUpSlider: function() {
+			var startRadius = this.create.css("border-radius"),
+				startRadius = parseInt(startRadius),
+				startBorder = this.create.css("border-width"),
+				startBorder = parseInt(startBorder);
 
-			if(newRadius > this.MAXRADIUS) {
-				newRadius = this.MAXRADIUS;
-				$("#increase-radius").addClass("disabled");
-			}
-			if(newRadius > this.MINRADIUS){
-				$("#reduse-radius").removeClass("disabled");
-			}
-
-			this.create.css({
-				"border-radius" : newRadius
+			$("#brad-slider").slider({
+				range: "min",
+				max: this.maxRadius,
+				step: 1,
+				value: startRadius,
+				slide: this.getBorderRadius
 			});
 
+			$("#brdr-slider").slider({
+				range: "min",
+				max: this.maxBorder,
+				step: 1,
+				value: startBorder,
+				slide: this.getBorderWidth
+			});
+		},
+
+		// Получаем значение border-radius из слайдера:
+		getBorderRadius: function() {
+			var newRadiusToCss = $("#brad-slider").slider("option", "value");
+
+			app.create.css({
+				"border-radius" : newRadiusToCss
+			});
+
+			app.updateResult();
+		},
+
+		// Получаем значение border-width из слайдера:
+		getBorderWidth: function() {
+			var y = parseFloat($("#brdr-slider").css("width")),
+				x = parseFloat($("#brdr-slider .ui-slider-range").css("width")),
+				z = x/y,
+				z1 = z * app.maxBorder,
+				borderToCss = z1.toFixed() + "px";
+
+			var newBorderToCss = $("#brdr-slider").slider("option", "value");
+
+			app.create.css({
+				"border-width" : newBorderToCss
+			});
+
+			app.updateResult();
+		},
+
+		// Изменяем текст в кнопке:
+		textChange : function() {
+			var text = $("#input-text").val();
+
+			this.create.text(text);
 			this.updateResult();
 		},
 
-		reduseRadius: function() {
-			var currentRadius = this.create.css("border-radius"),
-				step = $("#step").val(),
-				newRadius = parseInt(currentRadius) - parseInt(step);
+		// Изменение кнопки и результатов вывода:
+		updateResult: function(newRadiusToCss) {
+			var htmlResult   = this.create.html(),
+				htmlCode     = $("#html-code"),
+				cssCode      = $("#css-code"),
+				borderRadius = this.create.css("border-radius"),
+				border       = this.create.css("border-width");
 
-			if(newRadius < this.MINRADIUS) {
-				newRadius = this.MINRADIUS;
-				$("#reduse-radius").addClass("disabled");
-			}
+			htmlCode.text(
+				"<button class='button' type='submit'>" + htmlResult + "</button>"
+			);
 
-			if(newRadius < this.MAXRADIUS){
-				$("#increase-radius").removeClass("disabled");
-			}
-
-			this.create.css({
-				"border-radius" : newRadius
-			});
-
-			this.updateResult();
-		},
-
-		bgColorInput : function() {
-			var newColor = "#" + $("#bg-color").val();
-
-			this.create.css({
-				"background-color" : newColor
-			});
-
-			this.updateResult();
-		},
-
-		brdrColorInput : function() {
-			var newColor = "#" + $("#border-color").val();
-
-			this.create.css({
-				"border-color" : newColor
-			});
-
-			this.updateResult();
-		},
-
-		updateResult: function() {
-			var borderRadius   = this.create.css("border-radius"),
-				bgColor        = this.create.css("background-color"),
-				brdrColor      = this.create.css("border-color"),
-				codeResultArea = $("#code-result");
-
-			codeResultArea.text(
-				"backgtound-color: " + bgColor + ";\n" +
-				"border-color: " + brdrColor + ";\n" +
+			cssCode.text(
+				"background-color: #1ABC9C;\n" +
+				"border: " + border + " solid #17a689;\n" +
 				"-webkit-border-radius: " + borderRadius + ";\n" +
-				"border-radius: " + borderRadius + ";"
+				"border-radius: " + borderRadius + ";\n" +
+				"color: #FFF;\n" +
+				"font-weight: bold;\n" +
+				"line-height: 2.6em;\n" +
+				"margin: 50px auto;\n" +
+				"min-height: 40px;\n" +
+				"min-width: 140px;\n" +
+				"padding: 0 8px;\n" +
+				"text-align: center;"
 			);
 		}
 
 	};
 
-	// Инициализируем слайдер:
-	function hexFromRGB(red) {
-
-		var hex = red.toString(16);
-
-		$.each( hex, function( nr, val ) {
-			if ( val.length === 1 ) {
-				hex[ nr ] = "0" + val;
-			}
-		});
-
-		return hex.join("").toUpperCase();
-	}
-
-	function refreshSwatch() {
-
-		var red = $( "#brad-slider" ).slider("value"),
-			hex = hexFromRGB(red);
-
-		$(".create").css("background-color", "#" + hex);
-	}
-
-	$("#brad-slider").slider({
-		orientation: "horizontal",
-		range: "min",
-		max: 100,
-		value: 50,
-		slide: refreshSwatch,
-		change: refreshSwatch
-	});
-
-	$("#brdr-slider").slider({
-		orientation: "horizontal",
-		range: "min",
-		max: 100,
-		value: 50,
-		slide: refreshSwatch,
-		change: refreshSwatch
-	});
-
 	// Инициализируем модуль:
 	app.initialize();
+
+}());
+
+(function() {
+
+	var mail = {
+
+		initialize : function () {
+			this.setUpListeners();
+		},
+
+		setUpListeners: function () {
+			$('form').on('submit', mail.submitForm);
+			$('form').on('keydown', 'input', mail.removeError);
+		},
+
+		submitForm: function (e) {
+			e.preventDefault();
+
+			var form = $(this),
+				submitBtn = form.find('button[type="submit"]');
+
+			if( mail.validateForm(form) === false ) return false;
+
+			submitBtn.attr("disabled", "disabled");
+
+			var str = form.serialize();
+
+			$.ajax({
+				url: "src/contact_form/post.php",
+				type: "POST",
+				data: str
+			})
+
+			.done(function(msg) {
+				if(msg === "OK"){
+					var result = "<div = 'bg-success'>CSS3 button was send to your email, bro! Pease!</div>";
+
+					form.html(result);
+				} else {
+					form.html(msg);
+				}
+			})
+
+			.always(function() {
+				submitBtn.removeAttr("disabled");
+			});
+
+		},
+
+		validateForm: function (form){
+			var inputs = form.find("input"),
+				valid = true;
+
+			// Разрушаем все тултипы:
+			inputs.tooltip("destroy");
+
+			// Проходим по всем импутам и проверяем значения:
+			$.each(inputs, function(index, val) {
+				var input = $(val),
+					val = input.val(),
+					formGroup = input.parents(".form-group"),
+					textError = "Enter your e-mail bro!";
+
+				// Отображение тултипа:
+				if(val.length === 0) {
+					formGroup.addClass('has-error').removeClass('has-success');
+
+					input.tooltip({
+						trigger: 'manual',
+						placement: 'right',
+						title: textError
+					}).tooltip('show');
+
+					valid = false;
+				} else {
+					formGroup.addClass('has-success').removeClass('has-error');
+				}
+			});
+
+			return valid;
+		},
+
+		removeError: function () {
+			$(this).tooltip('destroy').parents('.form-group').removeClass('has-error');
+		}
+
+	}
+
+	mail.initialize();
 
 }());

@@ -52,18 +52,18 @@ module.exports = function (grunt) {
 		// плагин конкатенации:
 		concat: {
 			dist: {
-				src: ["src/js/main.js"],
+				src: ["src/js/main.js", "src/js/mail.js"],
 				dest: "dest/js/build.js"
 			}
 		},
 
 		// плагин минификации js:
-		// uglify: {
-		// 	build: {
-		// 		src: "dest/js/build.js",
-		// 		dest: "dest/js/build.min.js"
-		// 	}
-		// },
+		uglify: {
+			build: {
+				src: "dest/js/build.js",
+				dest: "dest/js/build.min.js"
+			}
+		},
 
 		// плагин удаления логов:
 		// removelogging: {
@@ -77,8 +77,8 @@ module.exports = function (grunt) {
 		watch: {
 			scripts: {
 				files: ["src/js/*.js"],
-				// tasks: ["jshint", "concat", "uglify", "removelogging"]
-				tasks: ["jshint"]
+				// tasks: ["removelogging"]
+				tasks: ["jshint", "concat", "uglify"]
 			},
 
 			css: {
@@ -93,8 +93,8 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-contrib-compass");
 	grunt.loadNpmTasks("grunt-contrib-cssmin");
 	grunt.loadNpmTasks("grunt-contrib-jshint");
-	// grunt.loadNpmTasks("grunt-contrib-concat");
-	// grunt.loadNpmTasks("grunt-contrib-uglify");
+	grunt.loadNpmTasks("grunt-contrib-concat");
+	grunt.loadNpmTasks("grunt-contrib-uglify");
 	// grunt.loadNpmTasks("grunt-remove-logging");
 	grunt.loadNpmTasks("grunt-contrib-watch");
 
