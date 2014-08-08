@@ -64,12 +64,6 @@
 
 		// Получаем значение border-width из слайдера:
 		getBorderWidth: function() {
-			var y = parseFloat($("#brdr-slider").css("width")),
-				x = parseFloat($("#brdr-slider .ui-slider-range").css("width")),
-				z = x/y,
-				z1 = z * app.maxBorder,
-				borderToCss = z1.toFixed() + "px";
-
 			var newBorderToCss = $("#brdr-slider").slider("option", "value");
 
 			app.create.css({
