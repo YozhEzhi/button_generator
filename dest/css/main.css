@@ -92,14 +92,14 @@ input[placeholder]:focus::-moz-placeholder {
   color: transparent;
 }
 
-/* line 38, ../../src/sass/main.scss */
+/* line 39, ../../src/sass/main.scss */
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
   background: #FFF;
 }
 
-/* line 43, ../../src/sass/main.scss */
+/* line 44, ../../src/sass/main.scss */
 .generator {
   background: rgba(255, 255, 255, 0.8);
   border: 2px solid rgba(231, 231, 231, 0.8);
@@ -115,24 +115,24 @@ fieldset[disabled] .form-control {
   position: absolute;
 }
 
-/* line 55, ../../src/sass/main.scss */
+/* line 56, ../../src/sass/main.scss */
 .h1 {
   margin: 20px 0 35px;
   text-transform: uppercase;
 }
 
-/* line 61, ../../src/sass/main.scss */
+/* line 62, ../../src/sass/main.scss */
 .gen__settings {
   margin: 0 0 30px;
 }
 
-/* line 65, ../../src/sass/main.scss */
+/* line 66, ../../src/sass/main.scss */
 .option-title {
   font-size: 1.8em;
   margin: 0 0 20px;
 }
 
-/* line 70, ../../src/sass/main.scss */
+/* line 71, ../../src/sass/main.scss */
 .create {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -150,13 +150,13 @@ fieldset[disabled] .form-control {
   padding: 0 8px;
   text-align: center;
 }
-/* line 85, ../../src/sass/main.scss */
+/* line 86, ../../src/sass/main.scss */
 .create:hover {
   background-color: #48c9b0;
   border-color: #38bfa5;
 }
 
-/* line 91, ../../src/sass/main.scss */
+/* line 92, ../../src/sass/main.scss */
 .row {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -164,18 +164,18 @@ fieldset[disabled] .form-control {
   user-select: none;
 }
 
-/* line 100, ../../src/sass/main.scss */
+/* line 101, ../../src/sass/main.scss */
 .btn-info:focus,
 .btn-info:active,
 .btn-info:active:focus {
   outline: none;
 }
 
-/* line 105, ../../src/sass/main.scss */
+/* line 106, ../../src/sass/main.scss */
 .gen__results {
   text-align: center;
 }
-/* line 108, ../../src/sass/main.scss */
+/* line 109, ../../src/sass/main.scss */
 .gen__results textarea {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -188,13 +188,18 @@ fieldset[disabled] .form-control {
   vertical-align: top;
   width: 40%;
 }
-/* line 122, ../../src/sass/main.scss */
+/* line 123, ../../src/sass/main.scss */
 .gen__results input {
+  background: #FFF;
   display: block;
   margin: 20px auto;
   width: 220px;
 }
-/* line 128, ../../src/sass/main.scss */
+/* line 130, ../../src/sass/main.scss */
+.gen__results input:hover, .gen__results input:focus {
+  background: #FFF;
+}
+/* line 135, ../../src/sass/main.scss */
 .gen__results .btn-success {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -203,13 +208,13 @@ fieldset[disabled] .form-control {
   background: #1abc9c;
   border-color: #1abc9c;
 }
-/* line 134, ../../src/sass/main.scss */
+/* line 141, ../../src/sass/main.scss */
 .gen__results .btn-success:hover {
   background: #48c9b0;
   border-color: #48c9b0;
 }
 
-/* line 142, ../../src/sass/main.scss */
+/* line 149, ../../src/sass/main.scss */
 .ui-slider {
   background: #EBEDEF;
   -webkit-border-radius: 10px;
@@ -218,13 +223,13 @@ fieldset[disabled] .form-control {
   margin: 7px 0 15px 0;
   position: relative;
 }
-/* line 150, ../../src/sass/main.scss */
+/* line 157, ../../src/sass/main.scss */
 .ui-slider .ui-widget-header {
   -webkit-border-radius: 10px 0 0 10px;
   border-radius: 10px 0 0 10px;
   background: #1ABC9C;
 }
-/* line 156, ../../src/sass/main.scss */
+/* line 163, ../../src/sass/main.scss */
 .ui-slider .ui-slider-handle {
   -webkit-transition: background-color 0.3s ease;
   -moz-transition: background-color 0.3s ease;
@@ -242,26 +247,26 @@ fieldset[disabled] .form-control {
   width: 18px;
   z-index: 2;
 }
-/* line 172, ../../src/sass/main.scss */
+/* line 179, ../../src/sass/main.scss */
 .ui-slider .ui-slider-handle:hover, .ui-slider .ui-slider-handle:focus {
   background-color: #48C9B0;
   outline: none;
 }
 
-/* line 179, ../../src/sass/main.scss */
+/* line 186, ../../src/sass/main.scss */
 .ui-slider-range {
   height: 100%;
   left: 0;
   top: 0;
 }
 
-/* line 187, ../../src/sass/main.scss */
+/* line 194, ../../src/sass/main.scss */
 .tooltip-inner {
   background: #FF8993;
-  padding: 7px 12px;
+  padding: 9px 16px;
 }
 
-/* line 192, ../../src/sass/main.scss */
+/* line 199, ../../src/sass/main.scss */
 .tooltip.right .tooltip-arrow {
   border-right-color: #FF8993;
 }

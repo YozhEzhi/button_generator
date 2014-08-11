@@ -15,12 +15,11 @@
 			this.setUpListeners();
 			this.updateResult();
 			this.setUpSlider();
-			// this.getBorderRadius();
-			// this.getBorderWidth();
 		},
 
 		setUpListeners: function() {
 			$("#input-text").on("keyup", $.proxy(this.textChange, this));
+			// $("#submit").on("click", $.proxy(this.sendMail, this));
 		},
 
 		create    : $(".create"),
@@ -94,19 +93,31 @@
 			);
 
 			cssCode.text(
-				"background-color: #1ABC9C;\n" +
-				"border: " + border + " solid #17a689;\n" +
-				"-webkit-border-radius: " + borderRadius + ";\n" +
-				"border-radius: " + borderRadius + ";\n" +
-				"color: #FFF;\n" +
-				"font-weight: bold;\n" +
-				"line-height: 2.6em;\n" +
-				"margin: 50px auto;\n" +
-				"min-height: 40px;\n" +
-				"min-width: 140px;\n" +
-				"padding: 0 8px;\n" +
-				"text-align: center;"
+				".button {\n" +
+				"\t background-color: #1ABC9C;\n" +
+				"\t border: " + border + " solid #17a689;\n" +
+				"\t -webkit-border-radius: " + borderRadius + ";\n" +
+				"\t border-radius: " + borderRadius + ";\n" +
+				"\t color: #FFF;\n" +
+				"\t font-weight: bold;\n" +
+				"\t line-height: 2.6em;\n" +
+				"\t margin: 50px auto;\n" +
+				"\t min-height: 40px;\n" +
+				"\t min-width: 140px;\n" +
+				"\t padding: 0 8px;\n" +
+				"\t text-align: center;\n" +
+				"}"
 			);
+		},
+
+		// Отправка письма с результатом:
+		sendMail: function () {
+
+		},
+
+		// Валидация поля Email
+		validMail: function () {
+
 		}
 
 	};

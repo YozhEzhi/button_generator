@@ -33,6 +33,7 @@ input {
 	}
 
 }
+
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
@@ -120,9 +121,15 @@ fieldset[disabled] .form-control {
 	}
 
 	input {
+		background: #FFF;
 		display: block;
 		margin: 20px auto;
 		width: 220px;
+
+		&:hover,
+		&:focus {
+			background: #FFF;
+		}
 	}
 
 	.btn-success {
@@ -186,7 +193,7 @@ fieldset[disabled] .form-control {
 // TOOLTIP:
 .tooltip-inner {
 	background: #FF8993;
-	padding: 7px 12px;
+	padding: 9px 16px;
 }
 
 .tooltip.right .tooltip-arrow {

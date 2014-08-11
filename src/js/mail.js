@@ -7,79 +7,68 @@
 		},
 
 		setUpListeners: function () {
-			$('form').on('submit', mail.submitForm);
-			$('form').on('keydown', 'input', mail.removeError);
+			$("form").on("submit", mail.submitForm);
+			$("form").on("keydown", "input", mail.removeError);
 		},
 
 		submitForm: function (e) {
 			e.preventDefault();
 
 			var form = $(this),
-				submitBtn = form.find('button[type="submit"]');
+				submitBtn = form.find('button[type="submit"]'),
+				data = "mail="+$("#mail").val()+"&html="+$("#html-code").text()+"&css="+$("#css-code").text();
 
-			if( mail.validateForm(form) === false ) return false;
-
-			submitBtn.attr("disabled", "disabled");
-
-			var str = form.serialize();
+			if (mail.validateForm(form) === false) return false;
 
 			$.ajax({
-				url: "src/contact_form/post.php",
+				url: "src/post.php",
 				type: "POST",
-				data: str
+				data: data
 			})
 
-			.done(function(msg) {
-				if(msg === "OK"){
-					var result = "<div = 'bg-success'>CSS3 button was send to your email, bro! Pease!</div>";
-
-					form.html(result);
-				} else {
-					form.html(msg);
-				}
-			})
-
-			.always(function() {
-				submitBtn.removeAttr("disabled");
-			});
-
+			submitBtn.attr("disabled", "disabled"); // Не работает?
+			submitBtn.css("opacity", 0.5);
 		},
 
 		validateForm: function (form){
-			var inputs = form.find("input"),
-				valid = true;
+			var valid = true,
+				input = $("#mail"),
+				val = input.val();
 
-			// Разрушаем все тултипы:
-			inputs.tooltip("destroy");
+			// Отображение тултипа:
+			if(val.length === 0) {
 
-			// Проходим по всем импутам и проверяем значения:
-			$.each(inputs, function(index, val) {
-				var input = $(val),
-					val = input.val(),
-					formGroup = input.parents(".form-group"),
-					textError = "Enter your e-mail bro!";
+				input.addClass("btn-danger").tooltip({
+					placement: "right",
+					trigger: "manual",
+					title: "Enter your e-mail bro!"
+				}).tooltip("show");
 
-				// Отображение тултипа:
-				if(val.length === 0) {
-					formGroup.addClass('has-error').removeClass('has-success');
-
-					input.tooltip({
-						trigger: 'manual',
-						placement: 'right',
-						title: textError
-					}).tooltip('show');
-
-					valid = false;
-				} else {
-					formGroup.addClass('has-success').removeClass('has-error');
-				}
-			});
+				valid = false;
+			} else if (!mail.validMail()) {
+				input.tooltip({
+					title: "Type correct mail, bro!",
+					trigger: "manual",
+					placement: "right"
+				}).tooltip('show');
+			}
 
 			return valid;
 		},
 
+		// Валидация поля Email
+		validMail: function () {
+			var rv_email = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/,
+				val = $("#mail").val();
+			if (!val.length) {return false;}
+
+			return rv_email.test(val);
+		},
+
 		removeError: function () {
-			$(this).tooltip('destroy').parents('.form-group').removeClass('has-error');
+			$("#mail")
+				.removeClass("btn-danger")
+				.tooltip("destroy");
 		}
 
 	}
