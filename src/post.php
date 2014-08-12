@@ -8,7 +8,7 @@
 	$mail->Host = "smtp.gmail.com";
 	$mail->SMTPAuth = true;
 	$mail->Username = "yozhezhi@gmail.com";
-	$mail->Password = "8246!5555*";    // Пароль убрал, тк это мой личный ящик
+	$mail->Password = "***";    // Пароль убрал, тк это мой личный ящик
 	$mail->SMTPSecure = "tls";
 	$mail->From = "yozhezhi@gmail.com";
 	$mail->FromName = "Yozh Ezhi";
