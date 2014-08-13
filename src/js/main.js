@@ -21,6 +21,7 @@
 			$("#input-text").on("keyup", $.proxy(this.textChange, this));
 			$("form").on("submit", app.submitForm);
 			$("form").on("keydown", "input", app.removeError);
+			$("[data-dismiss='modal']").on("click", $.proxy(this.closeModal, this));
 		},
 
 		create    : $(".create"),
@@ -116,15 +117,28 @@
 			e.preventDefault();
 
 			var form = $(this),
-				submitBtn = form.find('button[type="submit"]'),
-				data = "mail="+$("#mail").val()+"&html="+$("#html-code").text()+"&css="+$("#css-code").text();
+				email = $("#mail").val(),
+				css = $("#css-code").val(),
+				html = $("#html-code").val(),
+				submitBtn = form.find('button[type="submit"]');
 
 			if (app.validateForm(form) === false) return false;
 
 			$.ajax({
 				url: "src/post.php",
 				type: "POST",
-				data: data
+				data: {
+					email: this.email,
+					css: this.css,
+					html: this.html
+				},
+				success: function () {
+					$(".modal__email").text(email);
+					$(".modal__html").text(html);
+					$(".modal__css").text(css);
+					$("#modal").show();
+					console.log("Email was send");
+				}
 			})
 
 			submitBtn.attr("disabled", "disabled"); // Не работает?
@@ -170,6 +184,13 @@
 			$("#mail")
 				.removeClass("btn-danger")
 				.tooltip("destroy");
+		},
+
+		closeModal: function () {
+			var submitBtn = $("#submit");
+
+			submitBtn.attr("disabled", "");
+			submitBtn.css("opacity", 1);
 		}
 
 	};

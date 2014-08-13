@@ -74,8 +74,36 @@
 
         <input id="mail" class="form-control" type="email" placeholder="your@email.com">
 
-        <button id="submit" type="submit" class="submit-button btn btn-default btn-success btn-lg">Submit</button>
+        <button id="submit" type="submit" class="submit-button btn btn-success btn-lg" data-toggle="modal" href="#modal">Submit</button>
       </form>
+    </div>
+
+    <!-- Results modal window -->
+    <div id="modal" class="modal fade" >
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h2 class="modal-title text-center">So...</h2>
+        </div>
+        <div class="modal-body">
+          <div class="modal-row">
+            <label class="modal-label">Your email:</label>
+            <div class="modal-result modal__email"></div>
+          </div>
+          <div class="modal-row">
+            <label class="modal-label">Your HTML code:</label>
+            <div class="modal-result modal__html"></div>
+          </div>
+          <div class="modal-row">
+            <label class="modal-label">Your CSS code:</label>
+            <div class="modal-result modal__css"></div>
+          </div>
+          <h4 class="text-center">Cheers Bro!</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -83,6 +111,6 @@
   <script src="apps/jquery-2.1.0.min.js"></script>
   <script src="apps/jquery-ui/jquery-ui.min.js"></script>
   <script src="apps/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="dest/js/build.min.js"></script>
+  <script src="dest/js/build.js"></script>
 </body>
 </html>

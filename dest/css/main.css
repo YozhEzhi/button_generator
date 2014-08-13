@@ -63,12 +63,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 9, ../../src/sass/main.scss */
+/* line 10, ../../src/sass/main.scss */
 html, body {
   height: 100%;
 }
 
-/* line 13, ../../src/sass/main.scss */
+/* line 14, ../../src/sass/main.scss */
 body {
   background: url("../img/tree-bark.png") repeat;
   font-family: Trebuchet MS, sans-serif;
@@ -76,30 +76,30 @@ body {
   font-weight: normal;
 }
 
-/* line 20, ../../src/sass/main.scss */
+/* line 21, ../../src/sass/main.scss */
 :focus {
   outline: none;
 }
 
-/* line 25, ../../src/sass/main.scss */
+/* line 26, ../../src/sass/main.scss */
 input[placeholder]:focus::-webkit-input-placeholder {
   -webkit-transition: color 0.3s linear;
   transition: color 0.3s linear;
   color: transparent;
 }
-/* line 31, ../../src/sass/main.scss */
+/* line 32, ../../src/sass/main.scss */
 input[placeholder]:focus::-moz-placeholder {
   color: transparent;
 }
 
-/* line 39, ../../src/sass/main.scss */
+/* line 40, ../../src/sass/main.scss */
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
   background: #FFF;
 }
 
-/* line 44, ../../src/sass/main.scss */
+/* line 45, ../../src/sass/main.scss */
 .generator {
   background: rgba(255, 255, 255, 0.8);
   border: 2px solid rgba(231, 231, 231, 0.8);
@@ -115,24 +115,24 @@ fieldset[disabled] .form-control {
   position: absolute;
 }
 
-/* line 56, ../../src/sass/main.scss */
+/* line 57, ../../src/sass/main.scss */
 .h1 {
   margin: 20px 0 35px;
   text-transform: uppercase;
 }
 
-/* line 62, ../../src/sass/main.scss */
+/* line 63, ../../src/sass/main.scss */
 .gen__settings {
   margin: 0 0 30px;
 }
 
-/* line 66, ../../src/sass/main.scss */
+/* line 67, ../../src/sass/main.scss */
 .option-title {
   font-size: 1.8em;
   margin: 0 0 20px;
 }
 
-/* line 71, ../../src/sass/main.scss */
+/* line 72, ../../src/sass/main.scss */
 .create {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -150,13 +150,13 @@ fieldset[disabled] .form-control {
   padding: 0 8px;
   text-align: center;
 }
-/* line 86, ../../src/sass/main.scss */
+/* line 87, ../../src/sass/main.scss */
 .create:hover {
   background-color: #48c9b0;
   border-color: #38bfa5;
 }
 
-/* line 92, ../../src/sass/main.scss */
+/* line 93, ../../src/sass/main.scss */
 .row {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -164,18 +164,18 @@ fieldset[disabled] .form-control {
   user-select: none;
 }
 
-/* line 101, ../../src/sass/main.scss */
+/* line 102, ../../src/sass/main.scss */
 .btn-info:focus,
 .btn-info:active,
 .btn-info:active:focus {
   outline: none;
 }
 
-/* line 106, ../../src/sass/main.scss */
+/* line 107, ../../src/sass/main.scss */
 .gen__results {
   text-align: center;
 }
-/* line 109, ../../src/sass/main.scss */
+/* line 110, ../../src/sass/main.scss */
 .gen__results textarea {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -188,19 +188,20 @@ fieldset[disabled] .form-control {
   vertical-align: top;
   width: 40%;
 }
-/* line 123, ../../src/sass/main.scss */
+/* line 124, ../../src/sass/main.scss */
 .gen__results input {
   background: #FFF;
   display: block;
   margin: 20px auto;
   width: 220px;
 }
-/* line 130, ../../src/sass/main.scss */
+/* line 131, ../../src/sass/main.scss */
 .gen__results input:hover, .gen__results input:focus {
   background: #FFF;
 }
-/* line 135, ../../src/sass/main.scss */
-.gen__results .btn-success {
+
+/* line 137, ../../src/sass/main.scss */
+.btn-success {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -208,13 +209,13 @@ fieldset[disabled] .form-control {
   background: #1abc9c;
   border-color: #1abc9c;
 }
-/* line 141, ../../src/sass/main.scss */
-.gen__results .btn-success:hover {
+/* line 143, ../../src/sass/main.scss */
+.btn-success:hover {
   background: #48c9b0;
   border-color: #48c9b0;
 }
 
-/* line 149, ../../src/sass/main.scss */
+/* line 150, ../../src/sass/main.scss */
 .ui-slider {
   background: #EBEDEF;
   -webkit-border-radius: 10px;
@@ -223,13 +224,13 @@ fieldset[disabled] .form-control {
   margin: 7px 0 15px 0;
   position: relative;
 }
-/* line 157, ../../src/sass/main.scss */
+/* line 158, ../../src/sass/main.scss */
 .ui-slider .ui-widget-header {
   -webkit-border-radius: 10px 0 0 10px;
   border-radius: 10px 0 0 10px;
   background: #1ABC9C;
 }
-/* line 163, ../../src/sass/main.scss */
+/* line 164, ../../src/sass/main.scss */
 .ui-slider .ui-slider-handle {
   -webkit-transition: background-color 0.3s ease;
   -moz-transition: background-color 0.3s ease;
@@ -247,13 +248,13 @@ fieldset[disabled] .form-control {
   width: 18px;
   z-index: 2;
 }
-/* line 179, ../../src/sass/main.scss */
+/* line 180, ../../src/sass/main.scss */
 .ui-slider .ui-slider-handle:hover, .ui-slider .ui-slider-handle:focus {
   background-color: #48C9B0;
   outline: none;
 }
 
-/* line 186, ../../src/sass/main.scss */
+/* line 187, ../../src/sass/main.scss */
 .ui-slider-range {
   height: 100%;
   left: 0;
@@ -261,12 +262,65 @@ fieldset[disabled] .form-control {
 }
 
 /* line 194, ../../src/sass/main.scss */
+.modal {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(231, 231, 231, 0.5);
+  border-radius: 4px;
+  height: 500px;
+  margin: auto;
+  padding: 10px;
+  width: 500px;
+}
+/* line 203, ../../src/sass/main.scss */
+.modal .modal-dialog {
+  margin: 0;
+  width: 100%;
+}
+/* line 208, ../../src/sass/main.scss */
+.modal h2 {
+  font-size: 36px;
+}
+/* line 212, ../../src/sass/main.scss */
+.modal h4 {
+  color: #CCC;
+  font-size: 16px;
+}
+
+/* line 218, ../../src/sass/main.scss */
+.modal-label {
+  color: #CCC;
+  float: left;
+  margin: 0 10px 0 0;
+  text-align: right;
+  width: 110px;
+}
+
+/* line 226, ../../src/sass/main.scss */
+.modal-row {
+  overflow: hidden;
+  *zoom: 1;
+  line-height: 20px;
+  margin: 0 0 30px;
+}
+
+/* line 232, ../../src/sass/main.scss */
+.modal-result {
+  overflow: hidden;
+}
+
+/* line 236, ../../src/sass/main.scss */
+.close {
+  position: relative;
+  z-index: 2;
+}
+
+/* line 242, ../../src/sass/main.scss */
 .tooltip-inner {
   background: #FF8993;
   padding: 9px 16px;
 }
 
-/* line 199, ../../src/sass/main.scss */
+/* line 247, ../../src/sass/main.scss */
 .tooltip.right .tooltip-arrow {
   border-right-color: #FF8993;
 }
