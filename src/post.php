@@ -7,13 +7,13 @@
 	$mail->isSMTP();
 	$mail->Host = "smtp.gmail.com";
 	$mail->SMTPAuth = true;
-	$mail->SMTPSecure = "ssl";
 	$mail->Port = 465;
 	$mail->CharSet = "UTF-8";
+	$mail->SMTPSecure = "ssl";
 
-	$mail->Username = "yozhezhi@gmail.com";
-	$mail->Password = "8246!5555*ektomorf";
-	$mail->SetFrom("yozhezhi@gmail.com", "Александр Жидовленко");
+	$mail->Username = "thesinnerssoul@gmail.com";
+	$mail->Password = "8246!5555*";
+	$mail->SetFrom("thesinnerssoul@gmail.com", "Александр Жидовленко");
 	$mail->Subject = "Ваш HTML и CSS";
 	$mail->MsgHTML("Здравствуйте! Высылаю ваш код кнопки:<br>
 		<p><b>HTML:</b></p><br>".

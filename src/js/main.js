@@ -15,6 +15,7 @@
 			this.setUpListeners();
 			this.updateResult();
 			this.setUpSlider();
+			this.getBorderRadius();
 		},
 
 		setUpListeners: function() {
@@ -37,24 +38,32 @@
 
 			$("#brad-slider").slider({
 				range: "min",
+				min: 0,
 				max: this.maxRadius,
 				step: 1,
-				value: startRadius,
-				slide: this.getBorderRadius
+				value: 5,
+				slide: function (event, ui) {
+					var newRadiusToCss = ui.value;
+					app.getBorderRadius(newRadiusToCss);
+				}
 			});
 
 			$("#brdr-slider").slider({
 				range: "min",
-				max: this.maxBorder,
+				min: 0,
+				max: 10,
 				step: 1,
-				value: startBorder,
-				slide: this.getBorderWidth
+				value: 3,
+				slide: function (event, ui) {
+					var newBorderToCss = ui.value;
+					app.getBorderWidth(newBorderToCss);
+				}
 			});
 		},
 
 		// Получаем значение border-radius из слайдера:
-		getBorderRadius: function() {
-			var newRadiusToCss = $("#brad-slider").slider("option", "value");
+		getBorderRadius: function(newRadiusToCss) {
+			console.log(newRadiusToCss);
 
 			app.create.css({
 				"border-radius" : newRadiusToCss
@@ -64,8 +73,7 @@
 		},
 
 		// Получаем значение border-width из слайдера:
-		getBorderWidth: function() {
-			var newBorderToCss = $("#brdr-slider").slider("option", "value");
+		getBorderWidth: function(newBorderToCss) {
 
 			app.create.css({
 				"border-width" : newBorderToCss
@@ -141,10 +149,13 @@
 				}
 			})
 
+			console.log(data);
+
 			submitBtn.attr("disabled", "disabled"); // Не работает?
 			submitBtn.css("opacity", 0.5);
 		},
 
+		// Валидация почты:
 		validateForm: function (form){
 			var valid = true,
 				input = $("#mail"),
@@ -171,7 +182,7 @@
 			return valid;
 		},
 
-		// Валидация поля Email
+		// Валидация поля Email:
 		validMail: function () {
 			var rv_email = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/,
 				val = $("#mail").val();
@@ -180,12 +191,14 @@
 			return rv_email.test(val);
 		},
 
+		// Удаление тултипа и красной обводки на инпута:
 		removeError: function () {
 			$("#mail")
 				.removeClass("btn-danger")
 				.tooltip("destroy");
 		},
 
+		// Закрытие модального окна:
 		closeModal: function () {
 			var submitBtn = $("#submit");
 
