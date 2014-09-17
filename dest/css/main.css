@@ -214,8 +214,14 @@ fieldset[disabled] .form-control {
   background: #48C9B0;
   border-color: #48C9B0;
 }
+/* line 148, ../../src/sass/main.scss */
+.btn-success.disabled, .btn-success[disabled] {
+  background: #1ABC9C;
+  border-color: #1ABC9C;
+  opacity: 0.5 !important;
+}
 
-/* line 150, ../../src/sass/main.scss */
+/* line 158, ../../src/sass/main.scss */
 .ui-slider {
   background: #EBEDEF;
   -webkit-border-radius: 10px;
@@ -224,13 +230,13 @@ fieldset[disabled] .form-control {
   margin: 7px 0 15px 0;
   position: relative;
 }
-/* line 158, ../../src/sass/main.scss */
+/* line 166, ../../src/sass/main.scss */
 .ui-slider .ui-widget-header {
   -webkit-border-radius: 10px 0 0 10px;
   border-radius: 10px 0 0 10px;
   background: #1ABC9C;
 }
-/* line 164, ../../src/sass/main.scss */
+/* line 172, ../../src/sass/main.scss */
 .ui-slider .ui-slider-handle {
   -moz-transition: background-color 0.3s ease;
   -o-transition: background-color 0.3s ease;
@@ -248,20 +254,20 @@ fieldset[disabled] .form-control {
   width: 18px;
   z-index: 2;
 }
-/* line 179, ../../src/sass/main.scss */
+/* line 187, ../../src/sass/main.scss */
 .ui-slider .ui-slider-handle:hover, .ui-slider .ui-slider-handle:focus {
   background-color: #48C9B0;
   outline: none;
 }
 
-/* line 187, ../../src/sass/main.scss */
+/* line 195, ../../src/sass/main.scss */
 .ui-slider-range {
   height: 100%;
   left: 0;
   top: 0;
 }
 
-/* line 194, ../../src/sass/main.scss */
+/* line 202, ../../src/sass/main.scss */
 .modal {
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(231, 231, 231, 0.5);
@@ -271,22 +277,22 @@ fieldset[disabled] .form-control {
   padding: 10px;
   width: 500px;
 }
-/* line 203, ../../src/sass/main.scss */
+/* line 211, ../../src/sass/main.scss */
 .modal .modal-dialog {
   margin: 0;
   width: 100%;
 }
-/* line 208, ../../src/sass/main.scss */
+/* line 216, ../../src/sass/main.scss */
 .modal h2 {
   font-size: 36px;
 }
-/* line 212, ../../src/sass/main.scss */
+/* line 220, ../../src/sass/main.scss */
 .modal h4 {
   color: #CCC;
   font-size: 16px;
 }
 
-/* line 218, ../../src/sass/main.scss */
+/* line 226, ../../src/sass/main.scss */
 .modal-label {
   color: #CCC;
   float: left;
@@ -295,7 +301,7 @@ fieldset[disabled] .form-control {
   width: 110px;
 }
 
-/* line 226, ../../src/sass/main.scss */
+/* line 234, ../../src/sass/main.scss */
 .modal-row {
   overflow: hidden;
   *zoom: 1;
@@ -303,24 +309,24 @@ fieldset[disabled] .form-control {
   margin: 0 0 30px;
 }
 
-/* line 232, ../../src/sass/main.scss */
+/* line 240, ../../src/sass/main.scss */
 .modal-result {
   overflow: hidden;
 }
 
-/* line 236, ../../src/sass/main.scss */
+/* line 244, ../../src/sass/main.scss */
 .close {
   position: relative;
   z-index: 2;
 }
 
-/* line 242, ../../src/sass/main.scss */
+/* line 250, ../../src/sass/main.scss */
 .tooltip-inner {
   background: #FF8993;
   padding: 9px 16px;
 }
 
-/* line 247, ../../src/sass/main.scss */
+/* line 255, ../../src/sass/main.scss */
 .tooltip.right .tooltip-arrow {
   border-right-color: #FF8993;
 }

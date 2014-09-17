@@ -144,6 +144,14 @@ fieldset[disabled] .form-control {
 		background: $c-bg-slider-hover;
 		border-color: $c-bg-slider-hover;
 	}
+
+	&.disabled,
+	&[disabled] {
+		background: $c-bg-slider;
+		border-color: $c-bg-slider;
+		opacity: 0.5 !important;
+	}
+
 }
 
 // SLIDER:

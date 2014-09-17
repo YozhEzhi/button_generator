@@ -12,10 +12,11 @@
 
 	var app = {
 		initialize: function() {
+			this.newRadiusToCss = 0;
+			this.newBorderToCss = 0;
+
 			this.setUpListeners();
-			this.updateResult();
 			this.setUpSlider();
-			this.getBorderRadius();
 		},
 
 		setUpListeners: function() {
@@ -43,8 +44,9 @@
 				step: 1,
 				value: 5,
 				slide: function (event, ui) {
-					var newRadiusToCss = ui.value;
-					app.getBorderRadius(newRadiusToCss);
+					app.newRadiusToCss = ui.value;
+					app.getBorderRadius();
+					app.updateResult();
 				}
 			});
 
@@ -55,31 +57,29 @@
 				step: 1,
 				value: 3,
 				slide: function (event, ui) {
-					var newBorderToCss = ui.value;
-					app.getBorderWidth(newBorderToCss);
+					app.newBorderToCss = ui.value;
+					app.getBorderWidth();
+					app.updateResult();
 				}
 			});
 		},
 
 		// Получаем значение border-radius из слайдера:
-		getBorderRadius: function(newRadiusToCss) {
-			console.log(newRadiusToCss);
+		getBorderRadius: function() {
 
 			app.create.css({
-				"border-radius" : newRadiusToCss
+				"border-radius" : app.newRadiusToCss
 			});
 
-			app.updateResult();
 		},
 
 		// Получаем значение border-width из слайдера:
-		getBorderWidth: function(newBorderToCss) {
+		getBorderWidth: function() {
 
 			app.create.css({
-				"border-width" : newBorderToCss
+				"border-width" : app.newBorderToCss
 			});
 
-			app.updateResult();
 		},
 
 		// Изменяем текст в кнопке:
@@ -95,8 +95,8 @@
 			var htmlResult   = this.create.html(),
 				htmlCode     = $("#html-code"),
 				cssCode      = $("#css-code"),
-				borderRadius = this.create.css("border-radius"),
-				border       = this.create.css("border-width");
+				borderRadius = app.newRadiusToCss,
+				border       = app.newBorderToCss;
 
 			htmlCode.text(
 				"<button class='button' type='submit'>" + htmlResult + "</button>"
@@ -118,6 +118,7 @@
 				"\t text-align: center;\n" +
 				"}"
 			);
+
 		},
 
 		// Отправка письма с результатом:
