@@ -1,0 +1,10 @@
+{
+  "name": "yozhezhi-portfolio",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "1.11",
+    "modernizr": "~2.8.3",
+    "jquery-ui": "~1.11.4",
+    "bootstrap": "~3.3.4"
+  }
+}

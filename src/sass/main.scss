@@ -1,6 +1,8 @@
-@import "compass/reset";
-@import "compass/utilities";
-@import "compass/css3";
+// IMPORTS:
+@import "bootstrap";
+// @import "compass/reset";
+// @import "compass/utilities";
+// @import "compass/css3";
 
 // VARIABLES:
 $c-bg-slider       : #1ABC9C;
@@ -139,10 +141,18 @@ fieldset[disabled] .form-control {
 
 	background: $c-bg-slider;
 	border-color: $c-bg-slider;
+	box-shadow: none !important;
 
-	&:hover {
+	&:hover,
+	&:focus,
+	&:active {
 		background: $c-bg-slider-hover;
 		border-color: $c-bg-slider-hover;
+	}
+
+	&:focus,
+	&:active {
+		outline: none !important;
 	}
 
 	&.disabled,
@@ -249,7 +259,9 @@ fieldset[disabled] .form-control {
 // TOOLTIP:
 .tooltip-inner {
 	background: #FF8993;
-	padding: 9px 16px;
+	font-size: 14px;
+	line-height: 130%;
+	padding: 8px 16px;
 }
 
 .tooltip.right .tooltip-arrow {

@@ -1,19 +1,15 @@
-// ЗАМЕТКИ:
-
-// create    - кнопка;
-// maxRadius - максимальный радиус скругления (половина высоты кнопки);
-// maxBorder - максимальная ширина бордюра (шестая часть высоты кнопки);
-// sliderWidth - длина слайдера;
-// rangeWidth - длина выбраного уровня слайдера;
-// radiusValue - сырое значение радиуса;
-// radiusToCss - готовое значение радиуса для стилей;
+// $create     - кнопка;
+// maxRadius   - максимальный радиус скругления (половина высоты кнопки);
+// maxBorder   - максимальная ширина бордюра (четверть высоты кнопки);
+// radiusToCss - значение радиуса для кнопки;
+// borderToCss - значение ширины бордюр для кнопки;
 
 ;(function() {
 
 	var app = {
 		initialize: function() {
-			this.newRadiusToCss = 0;
-			this.newBorderToCss = 0;
+			this.radiusToCss = 0;
+			this.borderToCss = 0;
 
 			this.setUpListeners();
 			this.setUpSlider();
@@ -26,38 +22,38 @@
 			$("[data-dismiss='modal']").on("click", $.proxy(this.closeModal, this));
 		},
 
-		create    : $(".create"),
+		$create   : $(".create"),
 		maxRadius : $(".create").outerHeight() / 2,
 		maxBorder : $(".create").outerHeight() / 4,
 
 		// Настройки слайдера:
 		setUpSlider: function() {
-			var startRadius = this.create.css("border-radius"),
+			var startRadius = this.$create.css("border-radius"),
 				startRadius = parseInt(startRadius),
-				startBorder = this.create.css("border-width"),
+				startBorder = this.$create.css("border-width"),
 				startBorder = parseInt(startBorder);
 
 			$("#brad-slider").slider({
-				range: "min",
-				min: 0,
-				max: this.maxRadius,
-				step: 1,
-				value: 5,
-				slide: function (event, ui) {
-					app.newRadiusToCss = ui.value;
+				range : "min",
+				min   : 0,
+				max   : this.maxRadius,
+				step  : 1,
+				value : 5,
+				slide : function (event, ui) {
+					app.radiusToCss = ui.value;
 					app.getBorderRadius();
 					app.updateResult();
 				}
 			});
 
 			$("#brdr-slider").slider({
-				range: "min",
-				min: 0,
-				max: 10,
-				step: 1,
-				value: 3,
-				slide: function (event, ui) {
-					app.newBorderToCss = ui.value;
+				range : "min",
+				min   : 0,
+				max   : 10,
+				step  : 1,
+				value : 3,
+				slide : function (event, ui) {
+					app.borderToCss = ui.value;
 					app.getBorderWidth();
 					app.updateResult();
 				}
@@ -67,8 +63,8 @@
 		// Получаем значение border-radius из слайдера:
 		getBorderRadius: function() {
 
-			app.create.css({
-				"border-radius" : app.newRadiusToCss
+			app.$create.css({
+				"border-radius" : app.radiusToCss
 			});
 
 		},
@@ -76,8 +72,8 @@
 		// Получаем значение border-width из слайдера:
 		getBorderWidth: function() {
 
-			app.create.css({
-				"border-width" : app.newBorderToCss
+			app.$create.css({
+				"border-width" : app.borderToCss
 			});
 
 		},
@@ -86,17 +82,17 @@
 		textChange : function() {
 			var text = $("#input-text").val();
 
-			this.create.text(text);
+			this.$create.text(text);
 			this.updateResult();
 		},
 
 		// Изменение кнопки и результатов вывода:
-		updateResult: function(newRadiusToCss) {
-			var htmlResult   = this.create.html(),
+		updateResult: function(radiusToCss) {
+			var htmlResult   = this.$create.html(),
 				htmlCode     = $("#html-code"),
 				cssCode      = $("#css-code"),
-				borderRadius = app.newRadiusToCss,
-				border       = app.newBorderToCss;
+				borderRadius = app.radiusToCss,
+				border       = app.borderToCss;
 
 			htmlCode.text(
 				"<button class='button' type='submit'>" + htmlResult + "</button>"
@@ -105,7 +101,7 @@
 			cssCode.text(
 				".button {\n" +
 				"\t background-color: #1ABC9C;\n" +
-				"\t border: " + border + " solid #17a689;\n" +
+				"\t border: " + border + " solid #17A689;\n" +
 				"\t -webkit-border-radius: " + borderRadius + ";\n" +
 				"\t border-radius: " + borderRadius + ";\n" +
 				"\t color: #FFF;\n" +
@@ -125,13 +121,13 @@
 		submitForm: function (e) {
 			e.preventDefault();
 
-			var form = $(this),
-				email = $("#mail").val(),
-				css = $("#css-code").val(),
-				html = $("#html-code").val(),
-				submitBtn = form.find('button[type="submit"]');
+			var $form      = $(this),
+				email      = $("#mail").val(),
+				css        = $("#css-code").val(),
+				html       = $("#html-code").val(),
+				$submitBtn = $form.find('button[type="submit"]');
 
-			if (app.validateForm(form) === false) return false;
+			if (app.validateForm($form) === false) return false;
 
 			$.ajax({
 				url: "src/post.php",
@@ -145,39 +141,47 @@
 					$(".modal__email").text(email);
 					$(".modal__html").text(html);
 					$(".modal__css").text(css);
-					$("#modal").show();
+					// $("#modal").show();
+
 					console.log("Email was send");
 				}
 			})
 
-			console.log(data);
+			$("#modal").modal();
 
-			submitBtn.attr("disabled", "disabled"); // Не работает?
-			submitBtn.css("opacity", 0.5);
+			$submitBtn.attr("disabled", "disabled"); // Не работает?
+			$submitBtn.css("opacity", 0.5);
+
+			console.log(data);
 		},
 
 		// Валидация почты:
-		validateForm: function (form){
-			var valid = true,
-				input = $("#mail"),
-				val = input.val();
+		validateForm: function(form) {
+			var valid  = true,
+				$input = $("#mail"),
+				val    = $input.val();
 
 			// Отображение тултипа:
 			if(val.length === 0) {
-
-				input.addClass("btn-danger").tooltip({
-					placement: "right",
-					trigger: "manual",
-					title: "Enter your e-mail bro!"
-				}).tooltip("show");
+				$input
+					.addClass("btn-danger")
+					.tooltip({
+						title: "Type in your e-mail bro!",
+						placement: "right",
+						trigger: "manual"
+					})
+					.tooltip("show");
 
 				valid = false;
-			} else if (!app.validMail()) {
-				input.tooltip({
-					title: "Type correct mail, bro!",
-					trigger: "manual",
-					placement: "right"
-				}).tooltip('show');
+
+			} else if ( !app.validMail() ) {
+				$input
+					.tooltip({
+						title: "Type correct mail, bro!",
+						placement: "right",
+						trigger: "manual"
+					})
+					.tooltip("show");
 			}
 
 			return valid;
@@ -186,13 +190,16 @@
 		// Валидация поля Email:
 		validMail: function () {
 			var rv_email = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/,
-				val = $("#mail").val();
-			if (!val.length) {return false;}
+				val      = $("#mail").val();
+
+			if (!val.length) {
+				return false;
+			}
 
 			return rv_email.test(val);
 		},
 
-		// Удаление тултипа и красной обводки на инпута:
+		// Удаление тултипа и красной обводки для инпута:
 		removeError: function () {
 			$("#mail")
 				.removeClass("btn-danger")
@@ -201,10 +208,10 @@
 
 		// Закрытие модального окна:
 		closeModal: function () {
-			var submitBtn = $("#submit");
+			var $submitBtn = $("#submit");
 
-			submitBtn.attr("disabled", "");
-			submitBtn.css("opacity", 1);
+			$submitBtn.attr("disabled", "");
+			$submitBtn.css("opacity", 1);
 		}
 
 	};
