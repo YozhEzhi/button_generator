@@ -133,9 +133,9 @@
 				url: "src/post.php",
 				type: "POST",
 				data: {
-					email: this.email,
-					css: this.css,
-					html: this.html
+					email : this.email,
+					css   : this.css,
+					html  : this.html
 				},
 				success: function () {
 					$(".modal__email").text(email);
@@ -166,9 +166,9 @@
 				$input
 					.addClass("btn-danger")
 					.tooltip({
-						title: "Type in your e-mail bro!",
-						placement: "right",
-						trigger: "manual"
+						title     : "Type in your e-mail bro!",
+						placement : "right",
+						trigger   : "manual"
 					})
 					.tooltip("show");
 
@@ -177,9 +177,9 @@
 			} else if ( !app.validMail() ) {
 				$input
 					.tooltip({
-						title: "Type correct mail, bro!",
-						placement: "right",
-						trigger: "manual"
+						title     : "Type correct mail, bro!",
+						placement : "right",
+						trigger   : "manual"
 					})
 					.tooltip("show");
 			}
